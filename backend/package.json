@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "express": "^5.1.0"
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "multer": "^2.0.1",
+    "xlsx": "^0.18.5"
   }
 }
