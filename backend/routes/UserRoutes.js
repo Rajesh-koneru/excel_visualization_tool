@@ -1,20 +1,19 @@
-// routes/UserRoutes.js
 const express = require('express');
-const router = express.Router(); // ✅ correct way
-const { registerUser } = require('../controllers/Register');
-const {LoginUser}=require('../controllers/Login')
-const {DataPreview}=require('../controllers/DataPreview')
-const {FileData}=require('../controllers/DataPreview')
-const {ExcelStore}=require('../controllers/ExcelData');
-const {deleteFile}=require('../controllers/Delete');
-const multer = require('multer');
+const router = express.Router();
+const authController = require('../controllers/authController');
+const datasetController = require('../controllers/datasetController');
+const upload = require('../middleware/fileUpload');
+const { authMiddleware } = require('../middleware/auth');
 
-const upload = multer({ storage: multer.memoryStorage() });
+// Legacy & direct routes mapping
+router.post('/register', authController.registerUser);
+router.post('/Login', authController.loginUser);
 
-router.post('/register', registerUser); // ✅ pass function, do NOT call it
-router.post('/Login', LoginUser);
-router.post('/datapreview', DataPreview);
-router.post('/ExcelUpload', upload.single('file'), ExcelStore);
-router.get('/FilesData',FileData);
-router.delete('/delete/:filename',deleteFile);
+router.post('/ExcelUpload', authMiddleware, upload.single('file'), datasetController.uploadExcel);
+router.post('/datapreview', datasetController.getDataPreview);
+router.get('/FilesData', authMiddleware, datasetController.getFilesData);
+router.delete('/delete/:filename', datasetController.deleteFile);
+router.get('/demo', datasetController.getDemoDataset);
+router.post('/clean/:filename', datasetController.cleanDataset);
+
 module.exports = router;

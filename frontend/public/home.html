@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExcelAnalyzer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200 min-h-screen text-gray-800">
+  <!-- Navbar -->
+  <nav class="sticky top-0 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 text-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-xl font-bold">ExcelAnalyzer</h1>
+      <div class="flex space-x-6 items-center">
+        <a href="#home" class="hover:text-blue-300 transition">Home</a>
+        <a href="#features" class="hover:text-blue-300 transition">Features</a>
+        <a href="#help" class="hover:text-blue-300 transition">Help</a>
+        <button class="bg-blue-600 px-3 py-1 rounded hover:bg-blue-500 transition">Login</button>
+        <button class="bg-blue-500 px-3 py-1 rounded hover:bg-blue-400 transition">Signup</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto p-6 space-y-12">
+    
+    <!-- File Upload Section -->
+    <section id="upload" class="mt-8 bg-white shadow-lg rounded-xl p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-800">📂 Upload Excel File</h2>
+      <div class="border-2 border-dashed border-blue-300 rounded-lg p-6 text-center bg-blue-50">
+        <p class="text-gray-600 mb-4">Drag and drop your .xlsx/.xls file here or click to upload</p>
+        <input type="file" accept=".xlsx, .xls" class="mx-auto block cursor-pointer" />
+      </div>
+
+      <!-- Preview Table -->
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold text-blue-700 mb-2">📋 File Preview (Top 5 Rows)</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto border border-blue-300 bg-white">
+            <thead class="bg-blue-100">
+              <tr>
+                <th class="border px-4 py-2">Column 1</th>
+                <th class="border px-4 py-2">Column 2</th>
+                <th class="border px-4 py-2">Column 3</th>
+                <th class="border px-4 py-2">Column 4</th>
+                <th class="border px-4 py-2">Column 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border px-4 py-2">Data 1</td>
+                <td class="border px-4 py-2">Data 2</td>
+                <td class="border px-4 py-2">Data 3</td>
+                <td class="border px-4 py-2">Data 4</td>
+                <td class="border px-4 py-2">Data 5</td>
+              </tr>
+              <!-- More rows can be dynamically added via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chart Analysis Section -->
+    <section id="chart" class="bg-white shadow-lg rounded-xl p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-800">📊 Chart Analysis</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+          <label class="block text-blue-700 font-medium mb-1">X-Axis:</label>
+          <select class="w-full border border-blue-300 rounded px-3 py-2">
+            <option>Select Column</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-blue-700 font-medium mb-1">Y-Axis:</label>
+          <select class="w-full border border-blue-300 rounded px-3 py-2">
+            <option>Select Column</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-blue-700 font-medium mb-1">Chart Type:</label>
+          <select class="w-full border border-blue-300 rounded px-3 py-2">
+            <option>Bar</option>
+            <option>Line</option>
+            <option>Pie</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-lg p-4">
+        <canvas id="excelChart" class="w-full h-64"></canvas>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Optional Footer -->
+  <footer class="mt-12 py-6 bg-gradient-to-r from-blue-900 to-blue-700 text-white text-center">
+    <p>&copy; 2025 ExcelAnalyzer. All rights reserved.</p>
+  </footer>
+</body>
+</html>
